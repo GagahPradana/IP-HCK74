@@ -3,20 +3,11 @@ import logo from "../assets/logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import userIcon from "../assets/user.png";
 import { ImSearch } from "react-icons/im";
+import { nav } from "../contents/nav";
 
 const Header = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  const nav = [
-    {
-      label: "Movies",
-      href: "movie",
-    },
-    {
-      label: "My List",
-      href: "mylist",
-    },
-  ];
   useEffect(() => {
     navigate(`/search?q=${search}`);
   }, [search]);
