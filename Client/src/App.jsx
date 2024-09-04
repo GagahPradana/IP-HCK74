@@ -4,12 +4,15 @@ import Footer from "./components/Footer";
 import MobileNav from "./components/MobileNav";
 import axios from "axios";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setBannerData } from "./store/gmovieSlice";
 
 function App() {
+  const dispatch = useDispatch();
   async function fecthTrendingData() {
     try {
       const response = await axios.get("/trending/all/day");
-      console.log("response", response);
+      dispatch(setBannerData(response.data.results));
     } catch (error) {
       console.log(error);
     }
