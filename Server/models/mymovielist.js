@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   MyMovieList.init(
     {
       userId: DataTypes.INTEGER,
-      movieId: DataTypes.INTEGER,
       listName: DataTypes.STRING,
       tags: DataTypes.ARRAY(DataTypes.STRING),
     },
