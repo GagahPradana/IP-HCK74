@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div>Footer</div>
-  )
+    <footer className="text-center bg-zinc-800 bg-opacity-35 text-zinc-300 py-4">
+      <div className="flex items-center justify-center gap-4">
+        <Link to={"/"}>About </Link>
+        <Link to={"/"}>Contact </Link>
+      </div>
+      <p className="text-sm">Created by G</p>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

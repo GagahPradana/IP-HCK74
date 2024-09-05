@@ -3,7 +3,7 @@ import { mobileNav } from "../contents/nav";
 import { NavLink } from "react-router-dom";
 function MobileNav() {
   return (
-    <section className="lg:hidden h-14 bg-zinc-800 bg-opacity-40 fixed bottom-0 w-full">
+    <section className="lg:hidden h-14 bg-zinc-800 bg-opacity-70 backdrop-blur-2xl fixed bottom-0 w-full z-40">
       <div className="flex items-center justify-between h-full text-zinc-400">
         {mobileNav.map((nav) => {
           return (

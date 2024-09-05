@@ -9,14 +9,16 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    navigate(`/search?q=${search}`);
-  }, [search]);
+    if (search.trim()) {
+      navigate(`/search?q=${search}`);
+    }
+  }, [search, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   return (
     <>
-      <header className="fixed top-0 w-full h-16 bg-zinc-800 bg-opacity-75">
+      <header className="fixed top-0 w-full h-16 bg-zinc-800 bg-opacity-75 z-40">
         <div className="container mx-auto px-2 flex items-center h-full">
           <Link to={"/"}>
             <img src={logo} alt="logo" width={120} />
@@ -24,7 +26,7 @@ const Header = () => {
           <nav className="hidden lg:flex items-center gap-1 ml-4">
             {nav.map((n) => {
               return (
-                <div key={n.id}>
+                <div key={n + ""}>
                   <NavLink
                     key={n.label}
                     to={n.href}

@@ -5,13 +5,13 @@ import MobileNav from "./components/MobileNav";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setBannerData } from "./store/gmovieSlice";
+import { setBannerData, setImageURL } from "./store/gmovieSlice";
 
 function App() {
   const dispatch = useDispatch();
   async function fecthTrendingData() {
     try {
-      const response = await axios.get("/trending/all/day");
+      const response = await axios.get("/trending/movie/day");
       dispatch(setBannerData(response.data.results));
     } catch (error) {
       console.log(error);
@@ -21,11 +21,22 @@ function App() {
     fecthTrendingData();
   }, []);
 
+  async function fecthConfigurasion() {
+    try {
+      const response = await axios.get("/configuration");
+      dispatch(setImageURL(response.data.images.secure_base_url + "original"));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    fecthConfigurasion();
+  }, []);
   return (
     <>
       <main className="pb-14 lg:pb-0">
         <Header />
-        <div className="pt-16">
+        <div className="">
           <Outlet />
         </div>
         <Footer />
