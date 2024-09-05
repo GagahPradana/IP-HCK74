@@ -1,14 +1,12 @@
-import axios from "axios";
 import { GoogleLogin } from "@react-oauth/google";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getLoginData } from "../utils/api";
 function Login() {
   const nav = useNavigate();
   async function fectGoogleLogin(response) {
     try {
-      const { data } = await axios({
-        method: "post",
-        url: "http://localhost:3000/google-login",
+      const { data } = await getLoginData({
         headers: {
           google_token: response.credential,
         },

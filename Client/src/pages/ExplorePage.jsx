@@ -29,9 +29,12 @@ const ExplorePage = () => {
     if (!hasMore) return;
     setLoading(true);
     try {
-      const response = await axios.get(`/discover/${params.explore}`, {
-        params: { page },
-      });
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/discover/${params.explore}`,
+        {
+          params: { page },
+        }
+      );
       const newData = response.data.results;
       setData((prevData) => [...prevData, ...newData]);
       setHasMore(newData.length > 0 && page < response.data.total_pages);

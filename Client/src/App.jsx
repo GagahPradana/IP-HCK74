@@ -6,12 +6,13 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setBannerData, setImageURL } from "./store/gmovieSlice";
+import { getConfigurasionMovies, getTrendingMovies } from "./utils/api";
 
 function App() {
   const dispatch = useDispatch();
   async function fecthTrendingData() {
     try {
-      const response = await axios.get("/trending/movie/day");
+      const response = await getTrendingMovies();
       dispatch(setBannerData(response.data.results));
     } catch (error) {
       console.log(error);
@@ -23,7 +24,7 @@ function App() {
 
   async function fecthConfigurasion() {
     try {
-      const response = await axios.get("/configuration");
+      const response = await getConfigurasionMovies();
       dispatch(setImageURL(response.data.images.secure_base_url + "original"));
     } catch (error) {
       console.log(error);

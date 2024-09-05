@@ -6,6 +6,7 @@ import DetailPage from "../pages/DetailPage";
 import SearchPage from "../pages/SearchPage";
 import Login from "../pages/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import MyList from "../pages/MyList";
 const router = createBrowserRouter([
   {
     element: (
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchPage />,
+      },
+      {
+        path: "/mylist",
+        element: <MyList />,
       },
     ],
   },
