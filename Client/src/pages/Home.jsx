@@ -2,7 +2,7 @@ import React from "react";
 import HomeBanner from "../components/HomeBanner";
 import { useSelector } from "react-redux";
 import Card from "../components/Card";
-import HorinzontalScrollCard from "../components/HorinzontalScrollCard";
+import HorinzontalScrollCard from "../components/VerticalScrollCard";
 
 const Home = () => {
   const trendingMovie = useSelector((state) => state.gmovieData.bannerData);

@@ -12,7 +12,7 @@ export default function Gemini() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const MODEL_NAME = `gemini-1.0-pro-001`;
+  const MODEL_NAME = `gemini-1.5-pro-001`;
   const genAi = new GoogleGenerativeAI(import.meta.env.VITE_API_KEY);
 
   const generateConfig = {
@@ -101,8 +101,16 @@ export default function Gemini() {
   };
 
   return (
-    <div className="mt-8 min-h-screen flex items-center justify-center bg-zinc-900">
-      <div className="w-full max-w-4xl p-8 bg-zinc-800 rounded-xl shadow-lg">
+    <div
+      className="mt-8 min-h-screen flex items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('https://images.alphacoders.com/134/thumb-1920-1343899.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="w-full max-w-4xl p-8 bg-zinc-800 bg-opacity-80 rounded-xl shadow-lg">
         <h1 className="text-3xl font-bold mb-8 text-center text-zinc-100">
           Gemini AI Chat
         </h1>
@@ -129,7 +137,7 @@ export default function Gemini() {
         <div className="flex">
           <input
             type="text"
-            className="flex-grow p-4 rounded-l-lg bg-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none  focus:ring-teal-500"
+            className="flex-grow p-4 rounded-l-lg bg-zinc-700 text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-teal-500"
             placeholder="Type a message..."
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}

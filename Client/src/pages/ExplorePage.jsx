@@ -56,12 +56,12 @@ const ExplorePage = () => {
   }, [params.explore]);
 
   return (
-    <div className="pt-16">
-      <div className="container mx-auto">
+    <div className=" pt-16">
+      <div className=" container mx-auto">
         <h3 className="capitalize text-lg lg:text-xl font-semibold my-3">
-          Popular {params.explore}
+          ALL {params.explore}
         </h3>
-        <div className="grid grid-cols-[repeat(auto-fit,228px)] gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,228px)] gap-6 justify-center lg:justify-normal">
           {data.map((exploreData, index) => {
             if (data.length === index + 1) {
               return (

@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
 import ExplorePage from "../pages/ExplorePage";
@@ -10,13 +10,19 @@ import MyList from "../pages/MyList";
 import Gemini from "../pages/Gemini";
 const router = createBrowserRouter([
   {
+    path: "/login",
     element: (
       <GoogleOAuthProvider clientId="774306274704-3bks81rvutdpgkplgcn865nlkhr8qq5h.apps.googleusercontent.com">
-        <Outlet />
+        <Login />
       </GoogleOAuthProvider>
     ),
+    loader: () => {
+      if (localStorage.getItem("token")) {
+        return redirect("/");
+      }
+      return null;
+    },
   },
-  { path: "/login", element: <Login /> },
   {
     path: "/",
     element: <App />,

@@ -44,27 +44,37 @@ module.exports = class userController {
   }
   static async googleLogin(req, res, next) {
     try {
+      console.log("Received headers:", req.headers);
       const { google_token } = req.headers;
+      console.log("Google token:", google_token);
+
       const ticket = await client.verifyIdToken({
         idToken: google_token,
         audience: process.env.GOOGLE_CLIENT_ID,
       });
+      console.log("Ticket verified");
+
       const payload = ticket.getPayload();
-      const user = await User.findOrCreate({
-        where: {
-          email: payload.email,
-        },
-        default: {
+      console.log("Payload:", payload);
+
+      const [user, created] = await User.findOrCreate({
+        where: { email: payload.email },
+        defaults: {
           username: payload.name,
           email: payload.email,
           password: "Gagah",
         },
         hooks: false,
       });
+      console.log("User found/created:", user.toJSON(), "Created:", created);
+
       const access_token = signToken({ id: user.id });
       res.status(200).json({ access_token });
     } catch (error) {
-      next(error);
+      console.error("Google login error:", error);
+      res
+        .status(500)
+        .json({ message: "Internal server error", error: error.message });
     }
   }
 };

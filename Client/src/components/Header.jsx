@@ -6,6 +6,10 @@ import { ImSearch } from "react-icons/im";
 import { nav } from "../contents/nav";
 
 const Header = () => {
+  // const handleLogOut = () => {
+  //   localStorage.removeItem("token");
+  //   nav("/login");
+  // };
   const location = useLocation();
   const removeSpace = location?.search?.slice(3)?.split("%20")?.join(" ");
   const [search, setSearch] = useState(removeSpace);
@@ -59,6 +63,7 @@ const Header = () => {
                 <ImSearch />
               </button>
             </form>
+
             <div className="w-8 h-8 rounded-full overflow-hidden cursor-pointer active:scale-75 transition-all">
               <img src={userIcon} alt="userIcon" width="w-full h-full" />
             </div>

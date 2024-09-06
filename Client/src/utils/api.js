@@ -11,6 +11,14 @@ const getTrendingMovies = async () => {
   );
   return response;
 };
+const endPoint = async () => {
+  const response = await axios.get("https://api.themoviedb.org/3", {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+    },
+  });
+  return response;
+};
 
 const getConfigurasionMovies = async () => {
   const response = await axios.get(
@@ -35,13 +43,16 @@ const getSearchMovies = async () => {
   return response;
 };
 
-const getLoginData = async () => {
-  const response = await axios({
-    method: "post",
-    url: "http://localhost:3000/google-login",
-  });
-  return response;
-};
+// const getLoginData = async () => {
+//   const response = await axios({
+//     method: "post",
+//     url: "http://localhost:3000/google-login",
+//     headers: {
+//       google_token: response.credential,
+//     },
+//   });
+//   return response;
+// };
 
 const addListNameMovie = async (listName, token) => {
   const response = await axios.post(
@@ -134,7 +145,7 @@ const deleteMovie = async (id, token) => {
 export {
   getTrendingMovies,
   getConfigurasionMovies,
-  getLoginData,
+  // getLoginData,
   editListMovie,
   editListNameMovie,
   addListMovie,
@@ -143,4 +154,5 @@ export {
   getListName,
   getMyList,
   getSearchMovies,
+  endPoint,
 };
