@@ -45,10 +45,20 @@ function CreateList() {
     setIsModalOpen(false);
   };
 
+  const backgroundImageUrl =
+    "https://user-images.githubusercontent.com/16425113/129554147-6ac7ba51-43e7-4c8e-ba77-e646a3ef6b12.jpg";
+
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-black">
-        <div className="text-center p-8">
+      <div
+        className="flex items-center justify-center min-h-screen"
+        style={{
+          backgroundImage: `url(${backgroundImageUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="text-center p-8 bg-black bg-opacity-80">
           <h1 className="text-3xl md:text-4xl text-gray-300 font-medium mb-4">
             Welcome to the add list page. In here you can add your own list
             movie.

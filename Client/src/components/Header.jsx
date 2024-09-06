@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import userIcon from "../assets/user.png";
 import { ImSearch } from "react-icons/im";
 import { nav } from "../contents/nav";
 
 const Header = () => {
-  const [search, setSearch] = useState("");
+  const location = useLocation();
+  const removeSpace = location?.search?.slice(3)?.split("%20")?.join(" ");
+  const [search, setSearch] = useState(removeSpace);
   const navigate = useNavigate();
+
+  console.log(removeSpace, "......");
   useEffect(() => {
-    if (search.trim()) {
+    if (search) {
       navigate(`/search?q=${search}`);
     }
-  }, [search, navigate]);
+  }, [search]);
   const handleSubmit = (e) => {
     e.preventDefault();
   };

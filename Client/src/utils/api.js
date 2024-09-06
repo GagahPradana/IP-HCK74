@@ -23,6 +23,17 @@ const getConfigurasionMovies = async () => {
   );
   return response;
 };
+const getSearchMovies = async () => {
+  const response = await axios.get(
+    "https://api.themoviedb.org/3/search/collection",
+    {
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+      },
+    }
+  );
+  return response;
+};
 
 const getLoginData = async () => {
   const response = await axios({
@@ -131,4 +142,5 @@ export {
   deleteMovie,
   getListName,
   getMyList,
+  getSearchMovies,
 };

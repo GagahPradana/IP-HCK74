@@ -7,6 +7,7 @@ import SearchPage from "../pages/SearchPage";
 import Login from "../pages/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import MyList from "../pages/MyList";
+import Gemini from "../pages/Gemini";
 const router = createBrowserRouter([
   {
     element: (
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      { path: "/gemini", element: <Gemini /> },
       {
         path: "",
         element: <Home />,
