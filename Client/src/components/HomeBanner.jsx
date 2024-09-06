@@ -82,7 +82,7 @@ function HomeBanner() {
                   <p>Rating: {Number(data.vote_average).toFixed(1)}+</p>
                   <p>View: {Number(data.popularity).toFixed(0)}</p>
                 </div>
-                <button className="bg-zinc-100 px-4 py-2 text-black font-bold rounded mt-4 hover:bg-gradient-to-l from-red-800 to-orange-500 shadow-md transition-all hover:scale-105">
+                <button className="bg-zinc-100 px-4 py-2 text-black font-bold rounded mt-4 hover:bg-gradient-to-l from-zinc-800 to-zinc-600 shadow-md transition-all hover:scale-105">
                   Play Now
                 </button>
               </div>
